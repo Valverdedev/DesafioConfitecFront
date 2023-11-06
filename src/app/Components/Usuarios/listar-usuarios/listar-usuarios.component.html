@@ -1,0 +1,74 @@
+<form class="custom-form row g-3" ngForm>
+
+  <div class="col-md-3">
+    <label for="Nome" class="form-label">Nome</label>
+    <input type="text" class="form-control" id="Nome" [(ngModel)]="usuarioModel.nome" name="nome">
+  </div>
+  <div class="col-md-3">
+    <label for="SobreNome" class="form-label">SobreNome</label>
+    <input type="text" class="form-control" id="SobreNome" [(ngModel)]="usuarioModel.sobrenome" name="sobrenome">
+  </div>
+  <div class="col-md-5">
+    <label for="email" class="form-label">email</label>
+    <input type="email" class="form-control" id="email" [(ngModel)]="usuarioModel.email" name="email">
+  </div>
+  <div class="col-md-5">
+    <label for="DataNascimento" class="form-label">Data Nascimento</label>
+    <input type="date" class="form-control" id="data" [(ngModel)]="usuarioModel.dataNascimento" name="dataNascimento">
+  </div>
+
+
+
+    <div class="col-md-5">
+      <div ngbDropdown class="d-inline-block">
+        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+         Escolaridade
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button type="button" (click)="Formacao('1')" ngbDropdownItem>Infantil</button>
+          <button type="button" (click)="Formacao('2')" ngbDropdownItem>Fundamental</button>
+          <button type="button" (click)="Formacao('3')" ngbDropdownItem>Médio</button>
+          <button type="button" (click)="Formacao('4')" ngbDropdownItem>Superior</button>
+        </div>
+      </div>
+    </div>
+
+
+
+  <button type="submit" class="btn btn-primary col-md-5" (click)="submitForm()">Submit</button>
+
+</form>
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+<div class="justify-content-center">
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Sobrenome</th>
+          <th scope="col">Email</th>
+          <th scope="col">Data Nascimento</th>
+          <th scope="col">Escolaridade</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{ usuario.id }}</td>
+          <td>{{ usuario.nome }}</td>
+          <td>{{ usuario.sobrenome }}</td>
+          <td>{{ usuario.email }}</td>
+          <td>{{ usuario.dataNascimento }}</td>
+          <td>{{ usuario.escolaridade }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="excluirUsuario(usuario.id)">Excluir</button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
